@@ -2,6 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+
+    <!-- Permission options for the `location` group -->
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Necesitamos permiso para determinar tu ubicación</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Necesitamos permiso para determinar tu ubicación</string>
+    <key>NSLocationUsageDescription</key>
+    <string>Necesitamos permiso para determinar tu ubicación</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Necesitamos permiso para determinar tu ubicación</string>
+
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
