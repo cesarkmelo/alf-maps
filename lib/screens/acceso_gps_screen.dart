@@ -8,7 +8,31 @@ class AccesoGpsScreen extends StatefulWidget {
   State<AccesoGpsScreen> createState() => _AccesoGpsScreenState();
 }
 
-class _AccesoGpsScreenState extends State<AccesoGpsScreen> {
+class _AccesoGpsScreenState extends State<AccesoGpsScreen>
+    with WidgetsBindingObserver {
+  bool popup = false;
+
+  @override
+  void initState() {
+    WidgetsBinding.instance!.addObserver(this);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance!.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) async {
+    if (state == AppLifecycleState.resumed && !popup) {
+      if (await Permission.location.isGranted) {
+        Navigator.pushReplacementNamed(context, 'loading');
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,8 +58,10 @@ class _AccesoGpsScreenState extends State<AccesoGpsScreen> {
               splashColor: Colors.transparent,
               elevation: 0,
               onPressed: () async {
+                popup = true;
                 final status = await Permission.location.request();
-                accesoGPS(status);
+                await accesoGPS(status);
+                popup = false;
               },
             ),
           ],
@@ -44,11 +70,11 @@ class _AccesoGpsScreenState extends State<AccesoGpsScreen> {
     );
   }
 
-  void accesoGPS(PermissionStatus status) {
+  Future accesoGPS(PermissionStatus status) async {
     switch (status) {
       case PermissionStatus.limited:
       case PermissionStatus.granted:
-        Navigator.pushReplacementNamed(context, 'mapa');
+        await Navigator.pushReplacementNamed(context, 'loading');
         break;
       case PermissionStatus.restricted:
       case PermissionStatus.permanentlyDenied:

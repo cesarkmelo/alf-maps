@@ -16,6 +16,10 @@
    <application
         android:label="alf_maps"
         android:icon="@mipmap/ic_launcher">
+
+       <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyDWeAqhU5WRcGh0iKTctTtvVEaMYKwwPno"/>
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
