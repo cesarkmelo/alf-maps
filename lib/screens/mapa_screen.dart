@@ -33,7 +33,7 @@ class _MapaScreenState extends State<MapaScreen> {
           builder: (_, state) => crearMapa(state)),
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
-        children: [BtnMyLocation()],
+        children: [BtnMyLocation(), BtnFollowLocation(), BtnMyRoute()],
       ),
     );
   }
@@ -42,6 +42,8 @@ class _MapaScreenState extends State<MapaScreen> {
     if (!state.existeUbicacion) return Center(child: const Text('Ubicando...'));
 
     final mapaBloc = BlocProvider.of<MapaBloc>(context);
+
+    mapaBloc.add(OnNuevaUbicacion(state.ubicacion!));
 
     final initialCameraPosition =
         CameraPosition(target: state.ubicacion as LatLng, zoom: 15);
@@ -52,6 +54,11 @@ class _MapaScreenState extends State<MapaScreen> {
       myLocationButtonEnabled: false,
       zoomControlsEnabled: false,
       onMapCreated: mapaBloc.initMapa,
+      polylines: mapaBloc.state.polylines.values.toSet(),
+      onCameraMove: (cameraPosition) {
+        // cameraPosition.target = LatLng central del mapa
+        mapaBloc.add(OnMovioMapa(cameraPosition.target));
+      },
     );
     //Text('Latitud: ${state.ubicacion!.latitude} - Longitud: ${state.ubicacion!.longitude}');
   }
