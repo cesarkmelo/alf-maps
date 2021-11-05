@@ -16,7 +16,7 @@ class MapaBloc extends Bloc<MapaEvent, MapaState> {
   GoogleMapController? _mapController;
 
   // Polylines
-  Polyline _miRuta = Polyline(
+  Polyline _miRuta = const Polyline(
       polylineId: PolylineId('mi_ruta'), width: 4, color: Colors.transparent);
 
   void initMapa(GoogleMapController controller) {

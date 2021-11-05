@@ -9,7 +9,7 @@ part 'mi_ubicacion_event.dart';
 part 'mi_ubicacion_state.dart';
 
 class MiUbicacionBloc extends Bloc<MiUbicacionEvent, MiUbicacionState> {
-  MiUbicacionBloc() : super(MiUbicacionState());
+  MiUbicacionBloc() : super(const MiUbicacionState());
 
   // Obtengo posicion del usuario
   StreamSubscription<Position>? _positionSubscription;

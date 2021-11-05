@@ -33,13 +33,13 @@ class _MapaScreenState extends State<MapaScreen> {
           builder: (_, state) => crearMapa(state)),
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
-        children: [BtnMyLocation(), BtnFollowLocation(), BtnMyRoute()],
+        children: const [BtnMyLocation(), BtnFollowLocation(), BtnMyRoute()],
       ),
     );
   }
 
   Widget crearMapa(MiUbicacionState state) {
-    if (!state.existeUbicacion) return Center(child: const Text('Ubicando...'));
+    if (!state.existeUbicacion) return const Center(child: Text('Ubicando...'));
 
     final mapaBloc = BlocProvider.of<MapaBloc>(context);
 

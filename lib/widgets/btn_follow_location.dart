@@ -10,7 +10,7 @@ class BtnFollowLocation extends StatelessWidget {
     return BlocBuilder<MapaBloc, MapaState>(
       builder: (context, state) {
         return Container(
-          margin: EdgeInsets.only(bottom: 10),
+          margin: const EdgeInsets.only(bottom: 10),
           child: CircleAvatar(
             backgroundColor: Colors.white,
             maxRadius: 25,

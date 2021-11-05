@@ -7,9 +7,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'bloc/mapa/mapa_bloc.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -20,11 +22,11 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Material App',
         debugShowCheckedModeBanner: false,
-        home: LoadingScreen(),
+        home: const LoadingScreen(),
         routes: {
-          'mapa': (_) => MapaScreen(),
-          'loading': (_) => LoadingScreen(),
-          'acceso_gps': (_) => AccesoGpsScreen()
+          'mapa': (_) => const MapaScreen(),
+          'loading': (_) => const LoadingScreen(),
+          'acceso_gps': (_) => const AccesoGpsScreen()
         },
       ),
     );

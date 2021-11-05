@@ -14,7 +14,7 @@ class MapaState {
     this.seguirUbicacion = false,
     this.ubicacionCentral,
     Map<String, Polyline>? polylines,
-  }) : polylines = polylines ?? Map();
+  }) : polylines = polylines ?? {};
 
   MapaState copyWith(
           {bool? mapaListo,

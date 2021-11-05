@@ -41,15 +41,15 @@ class _AccesoGpsScreenState extends State<AccesoGpsScreen>
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Debes permitirnos acceder a tu GPS para usar esta aplicación',
               textAlign: TextAlign.center,
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             MaterialButton(
-              child: Text(
+              child: const Text(
                 'Solicitar Acceso',
                 style: TextStyle(color: Colors.white),
               ),
